@@ -1,0 +1,15 @@
+# ベースイメージ
+FROM python:3.9-slim
+
+# 作業ディレクトリの作成
+WORKDIR /app
+
+# 依存パッケージのインストール
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt
+
+# アプリケーションのコピー
+COPY . .
+
+# アプリケーションの実行
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
