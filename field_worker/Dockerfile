@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # アプリケーションの実行
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "app:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "main:app"]
