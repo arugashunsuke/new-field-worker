@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # 作業ディレクトリの作成
-WORKDIR /app
+WORKDIR /app/field_worker
 
 # 依存パッケージのインストール
 COPY requirements.txt requirements.txt
