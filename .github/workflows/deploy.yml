@@ -26,8 +26,8 @@ jobs:
 
     - name: Deploy to Cloud Run
       run: |
-        gcloud run deploy your-app \
-          --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/your-app \
-          --region us-central1 \
+        gcloud run deploy test5 \
+          --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/test5 \
+          --region asia-northeast1 \
           --platform managed \
           --allow-unauthenticated
