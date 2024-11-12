@@ -26,7 +26,7 @@ jobs:
       - name: Deploy to Cloud Run
         run: |
           gcloud run deploy test5 \
-            --source=field_worker \
+            --source=./field_worker \
             --region asia-northeast1 \
             --platform managed \
             --allow-unauthenticated
