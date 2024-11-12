@@ -1,9 +1,7 @@
 name: Deploy to Cloud Run
 
 on:
-  push:
-    branches:
-      - main  # メインブランチへのpushでデプロイ
+  workflow_dispatch:  # 手動トリガーのみ有効化
 
 jobs:
   deploy:
@@ -26,7 +24,6 @@ jobs:
 
       - name: Build and push Docker image to Google Container Registry
         run: |
-          gcloud auth configure-docker
           docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/field-worker-service:latest field_worker
           docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/field-worker-service:latest
 
@@ -36,8 +33,4 @@ jobs:
             --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/field-worker-service:latest \
             --platform managed \
             --region asia-northeast1 \
-            -allow-unauthenticated
-
-
-
-            
+            --allow-unauthenticated
