@@ -25,7 +25,8 @@ jobs:
 
     - name: Build and Push Docker Image
       run: |
-        gcloud builds submit --source=field_worker --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/test5
+          cd field_worker
+          gcloud builds submit --tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/test5
 
     - name: Deploy to Cloud Run
       run: |
