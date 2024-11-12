@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # 作業ディレクトリの作成
-WORKDIR ./field_worker
+WORKDIR /app
 
 # 依存パッケージのインストール
 COPY requirements.txt requirements.txt
@@ -12,4 +12,4 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # アプリケーションの実行
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "main:app"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "field_worker.main:app"]
