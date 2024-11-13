@@ -1,7 +1,7 @@
 # ベースイメージ
 FROM python:3.9-slim
 
-# 作業ディレクトリの作成
+# 作業ディレクトリを設定（field_worker内に変更）
 WORKDIR /app
 
 # 依存パッケージのインストール
@@ -11,5 +11,5 @@ RUN pip install -r requirements.txt
 # アプリケーションのコピー
 COPY . .
 
-# アプリケーションの実行
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "field_worker.main:app"]
+# Gunicornでアプリケーションを起動
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "main:app"]
